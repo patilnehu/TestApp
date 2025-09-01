@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { View, FlatList, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  FlatList,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 import axios from "axios";
+import Footer from "../components/footer";
 
 const PostListScreen = ({ navigation }) => {
   const [posts, setPosts] = useState([]);
@@ -14,29 +21,42 @@ const PostListScreen = ({ navigation }) => {
 
   const renderItem = ({ item }) => (
     <TouchableOpacity
-      className="p-4 border-b border-gray-200"
-      onPress={() => navigation.navigate("PostDetails", { post: item })}
+      onPress={() => navigation.navigate("Details", { post: item })}
     >
-      <View className="p-3 border-b border-gray-300">
-        <Text className="font-bold text-lg">{item.title}</Text>
-        <Text className="text-gray-600">{item.body}</Text>
+      <View style={styles.item}>
+        <Text style={styles.title}>{item.title}</Text>
+        <Text>{item.body}</Text>
       </View>
     </TouchableOpacity>
   );
 
   return (
-    <View className="flex-1">
-      {/* Header */}
-      <View className="p-4 bg-blue-500">
-        <Text className="text-white text-xl font-bold">Posts List</Text>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Posts List</Text>
       </View>
       <FlatList
         data={posts}
         renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
       />
+      <Footer />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: { flex: 1 },
+  header: {
+    height: 60,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f0f0f0",
+  },
+  headerText: { fontSize: 20, fontWeight: "bold" },
+  list: { flex: 1 },
+  item: { padding: 10, borderBottomWidth: 1 },
+  title: { fontWeight: "bold" },
+});
 
 export default PostListScreen;

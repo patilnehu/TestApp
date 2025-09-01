@@ -1,9 +1,19 @@
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 
 export default function Footer() {
   return (
-    <View className="bg-gray-200 py-3">
-      <Text className="text-center text-gray-600">End of List</Text>
+    <View style={styles.footer}>
+      <Text>End of List</Text>
     </View>
   );
 }
+const styles = StyleSheet.create({
+  footer: {
+    height: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f0f0f0",
+  },
+  item: { padding: 10, borderBottomWidth: 1 },
+  title: { fontWeight: "bold" },
+});

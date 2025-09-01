@@ -1,15 +1,20 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { useRoute } from "@react-navigation/native";
+import { View, Text, StyleSheet } from "react-native";
 
-export default function PostDetailsScreen() {
-  const route = useRoute();
+const PostDetailsScreen = ({ route }) => {
   const { post } = route.params;
 
   return (
-    <View className="flex-1 p-4 bg-white">
-      <Text className="text-2xl font-bold mb-2">{post.title}</Text>
-      <Text className="text-gray-700">{post.body}</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>{post.title}</Text>
+      <Text>{post.body}</Text>
     </View>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  container: { flex: 1, padding: 20 },
+  title: { fontSize: 20, fontWeight: "bold", marginBottom: 10 },
+});
+
+export default PostDetailsScreen;
