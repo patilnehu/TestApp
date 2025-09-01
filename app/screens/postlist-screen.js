@@ -14,7 +14,8 @@ const PostListScreen = ({ navigation }) => {
 
   const renderItem = ({ item }) => (
     <TouchableOpacity
-      onPress={() => navigation.navigate("Details", { post: item })}
+      className="p-4 border-b border-gray-200"
+      onPress={() => navigation.navigate("PostDetails", { post: item })}
     >
       <View className="p-3 border-b border-gray-300">
         <Text className="font-bold text-lg">{item.title}</Text>
@@ -25,6 +26,10 @@ const PostListScreen = ({ navigation }) => {
 
   return (
     <View className="flex-1">
+      {/* Header */}
+      <View className="p-4 bg-blue-500">
+        <Text className="text-white text-xl font-bold">Posts List</Text>
+      </View>
       <FlatList
         data={posts}
         renderItem={renderItem}
