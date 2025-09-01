@@ -1,24 +1,25 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, Alert } from "react-native";
+import { View, TextInput, Button, Alert, StyleSheet } from "react-native";
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
     Alert.alert("Login Details", `Email: ${email}\nPassword: ${password}`);
+    navigation.navigate("Posts");
   };
 
   return (
-    <View className="flex-1 justify-center px-5">
+    <View style={styles.container}>
       <TextInput
-        className="border border-gray-400 mb-3 p-3 rounded"
+        style={styles.input}
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
       />
       <TextInput
-        className="border border-gray-400 mb-3 p-3 rounded"
+        style={styles.input}
         placeholder="Password"
         value={password}
         onChangeText={setPassword}
@@ -28,5 +29,10 @@ const LoginScreen = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: { flex: 1, justifyContent: "center", padding: 20 },
+  input: { borderWidth: 1, marginBottom: 10, padding: 10 },
+});
 
 export default LoginScreen;
