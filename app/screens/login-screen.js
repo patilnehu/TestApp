@@ -1,34 +1,41 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, Alert } from "react-native";
-import Footer from "../components/footer";
+import { View, TextInput, Button, Alert, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-const LoginScreen = () => {
+export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigation = useNavigation();
 
   const handleLogin = () => {
     Alert.alert("Login Details", `Email: ${email}\nPassword: ${password}`);
   };
 
   return (
-    <View className="flex-1 justify-center px-5">
+    <View className="flex-1 justify-center items-center p-4 bg-white">
+      <Text className="text-2xl font-bold mb-4">Login</Text>
       <TextInput
-        className="border border-gray-400 mb-3 p-3 rounded"
+        className="w-full border border-gray-300 p-2 mb-4 rounded"
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
       />
       <TextInput
-        className="border border-gray-400 mb-3 p-3 rounded"
+        className="w-full border border-gray-300 p-2 mb-4 rounded"
         placeholder="Password"
         value={password}
         onChangeText={setPassword}
         secureTextEntry
       />
       <Button title="Login" onPress={handleLogin} />
-      <Footer />
+      <Button
+        title="Go to Counter"
+        onPress={() => navigation.navigate("Counter")}
+      />
+      <Button
+        title="Go to Posts"
+        onPress={() => navigation.navigate("PostList")}
+      />
     </View>
   );
-};
-
-export default LoginScreen;
+}
