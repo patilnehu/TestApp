@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, TextInput, Button, Alert } from "react-native";
+import Footer from "../components/footer";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -25,6 +26,7 @@ const LoginScreen = () => {
         secureTextEntry
       />
       <Button title="Login" onPress={handleLogin} />
+      <Footer />
     </View>
   );
 };
