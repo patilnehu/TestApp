@@ -9,7 +9,7 @@ A React Native app built with Expo and React Navigation.
 ## Setup
 
 1. Clone: `git clone https://github.com/patilnehu/TestApp.git`
-2. Install: `cd ReactNativeTask1 && npm install`
+2. Install: `cd TestApp && npm install`
 3. Run: `npx expo start`
 
 ## Features
